@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix India – Watch TV Shows Online, Watch Movies Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .header {
+            position: relative;
+            /* container ko reference banane ke liye */
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+        }
+
+        .image1 {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+            filter: brightness(0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            /* neeche */
+        }
+
+        .nav {
+            width: 70vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            /* image ke upar */
+        }
+
+        .logo {
+            color: red;
+            font-family: sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+        }
+
+        .btn-black {
+            padding: 5px 15px;
+            margin-right: 20px;
+            font-weight: 400;
+            font-size: 15px;
+            background-color: rgba(88, 86, 86, 0.5);
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .btn-red {
+            padding: 5px 15px;
+            font-weight: 450;
+            font-size: 15px;
+            background-color: red;
+            color: white;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .text1 {
+            position: relative;
+            color: white;
+            text-align: center;
+            z-index: 2;
+            width: 600px;
+            height: 100px;
+            margin: auto;
+            margin-top: 20vh;
+            font-size: 58px;
+            font-family: sans-serif;
+            font-weight: 900;
+        }
+
+        .text2 {
+            position: relative;
+            color: white;
+            text-align: center;
+            z-index: 2;
+            /* width: 432px; */
+            /* height: 80px; */
+            margin: auto;
+            margin-top: 20vh;
+            font-size: 22px;
+            font-family: sans-serif;
+            font-weight: 400;
+        }
+
+        .text3 {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-family: sans-serif;
+            justify-content: center;
+            text-align: center;
+            margin-top: 5vh;
+            font-weight: 400;
+        }
+
+        .btn {
+            position: relative;
+            z-index: 2;
+            margin-top: 3vh;
+        }
+
+        .btn1 {
+            margin-left: 30vw;
+            width: 10vw;
+            /* padding: 2vh 7vw; */
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+            padding-left: 1vw;
+            padding-right: 12vw;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+
+        input::placeholder {
+            font-size: 16px;
+            color: rgb(176, 168, 168);
+        }
+
+        input {
+            color: white;
+            font-size: 16px;
+        }
+
+        .btn2 {
+            /* margin-left: 30vw; */
+            padding: 1.5vh 2vw;
+            margin-top: 2px;
+            margin-left: 5px;
+            background-color: red;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 25px;
+            color: white;
+            border: none;
+        }
+
+        .sepration {
+            background-color: rgb(0, 0, 0);
+            height: 1vh;
+            width: 99vw;
+        }
+
+        .section {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .first {
+            width: 85vw;
+            margin: auto;
+            background-color: black;
+        }
+
+        .img {
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 10px;
+            /* gap: 30px; */
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+
+        .para {
+            color: white;
+            font-family: sans-serif;
+            margin-left: 9vw;
+            margin-top: 10vh;
+            font-weight: 400;
+        }
+
+        .box1 {
+            display: flex;
+            /* gap: 30px; */
+            margin: auto;
+            width: 82vw;
+            font-family: sans-serif;
+        }
+
+        .box {
+            color: white;
+            width: 100%;
+            height: 30vh;
+            background-color: rgb(6, 32, 61);
+            justify-content: center;
+            text-align: center;
+            margin: 15px;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        .box h2 {
+            font-weight: 300;
+        }
+
+        .box h4 {
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        .h10 {
+            color: white;
+            font-family: sans-serif;
+            margin-left: 9vw;
+            font-size: 22px;
+            font-weight: 100;
+            margin-top: 5vh;
+
+        }
+
+        .question {
+            max-width: 80vw;
+            height: 8vh;
+            background-color: rgb(64, 58, 58);
+            margin: auto;
+            margin-top: 2vh;
+            margin-bottom: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .question p {
+            max-width: 30vw;
+            color: white;
+            font-family: sans-serif;
+            /* align-items: center; */
+            font-size: 25px;
+
+        }
+
+        .question:hover {
+            background-color: rgb(103, 99, 99);
+        }
+
+        svg {
+            width: 35px;
+            height: 35px;
+            color: white;
+            filter: invert(1);
+            margin-left: 55vw;
+
+        }
+
+        .svgfirst {
+            margin-left: 65vw;
+        }
+
+        .svgthird {
+            margin-left: 62vw;
+        }
+
+        .svgfour {
+            margin-left: 64vw;
+        }
+
+        .svgfive {
+            margin-left: 56vw;
+        }
+
+        .svgsix {
+            margin-left: 60vw;
+        }
+
+        svg:hover {
+            background-color: rgb(116, 74, 74);
+        }
+
+        .footerpara {
+            color: rgb(196, 187, 187);
+            font-family: sans-serif;
+            margin-left: 8vw;
+            margin-top: 10vh;
+            font-size: medium;
+        }
+
+        .footer5 {
+            display: flex;
+            flex-direction: row;
+            max-width: 80vw;
+            margin: auto;
+            gap: 15vw;
+            margin-top: 3vh;
+            margin-bottom: 10vh;
+        }
+
+        .footer1 {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .footer2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer3 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: rgb(196, 187, 187);
+            margin-top: 2vh;
+
+        }
+
+        .footbtn {
+            margin-left: 8vw;
+            font-size: 20px;
+            height: 5vh;
+            width: 8vw;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+
+        .footpara {
+            color: rgb(196, 187, 187);
+            font-family: sans-serif;
+            margin-left: 8vw;
+            margin-top: 5vh;
+
+        }
+
+        .lastpara {
+            color: rgb(196, 187, 187);
+            font-family: sans-serif;
+            margin-left: 8vw;
+            margin-top: 5vh;
+            font-size: small;
+            margin-bottom: 15vh;
+        }
+
+        .lastpara a {
+            color: rgb(68, 142, 244);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <!-- background image -->
+        <img class="image1" src="https://i.pinimg.com/originals/a5/b5/e1/a5b5e1635f8236317709ada555d1f19e.jpg" alt="">
+
+        <!-- navbar -->
+        <div class="nav">
+            <h1 class="logo">NETFLIX</h1>
+            <span>
+                <button class=" btn-black">English</button>
+                <button class=" btn-red">Sign In</button>
+            </span>
+        </div>
+
+        <!-- center text -->
+        <h1 class="text1">Unlimited movies, TV shows and more</h1>
+        <h4 class="text2">Starts at ₹149. Cancel at any time.</h4>
+        <h4 class="text3">Ready to watch? Enter your email to create or restart your membership.</h4>
+        <input class=" btn btn1" type="text" placeholder="Email Address"></input>
+        <button class=" btn btn2"> Get Started ></button>
+    </div>
+    <div class="sepration"></div>
+    <div class="section">
+        <div class="first">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVgzdeZGRAwCEa709VhH3rjzGTNzIDlWer-mLr3GaH6qm10zCfxxN-E1-JYCA8CxkoBD74MIuxW1agaVLL4kUpFTtsZPIuTfAV1ljNzcrTPup4487rDCgRuZm-Jn8fUi1cVx.jpg?r=d90"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVCFw8MF6uGSOWNdDuWDceFWSWZ_MZr2EVeAVUKKwem4V55-hgOZIN4bL1ec88hlPQR8gCcr5Kjh3D5ooumjy06p86FGLS_UZOw.jpg?r=267"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABSyEWnhjTjuqFw870rBScEnV2gTha0Gl7BmfSsX5e3RtJIM1eTzpnMRcInEiAcPfZDDUb75hwAh6s010xLSwWZvaH1iuN7CpRok.jpg?r=273"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABeoohnxFnnker6egKMvwn6DeDzabFIl9ofD4lkS5kkiTPw-oLlWlg5EpZ55JS5_fxaNaPe3XQikLVASgsLctH9EVpSaAa9-tUfqu6sGD8TTXs0N1KWu9-ZWOWYdhA6HajAgl.jpg?r=f17"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQv_qKs6sk8EvgL1Tys6_vGeoEK2mG7UaoT0kscI1Ia2BJZh8m_6pRLa9KIWwpg5uIYCOjS1Aw1faooc6zlgje2WDfsdtTTne4_-DFpmiUGlLRNNSl-Tk_xdhZxbe58GFLPL.jpg?r=b86"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABYoDa9uNT_sIEivblm1vOAPQTUwrpMwsVKKnIvYlHvm1fygT6QOLaHsUFBumyVWUe-aonr4OS6Xv8tUE2ZarGPmKXBrDhqVfQm2UiuZM3wtcAN3iaPf7xm7u09scGIW73X4s.jpg?r=e20"
+                alt="" class="img">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="first">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABfNlFEt-9DTSRWWIatIv7gv-ItPh91_VdnVeGeuJRFRDMiHhVSDQFSfhHSsy6-qpUXAVYcx_tl_nRJTe5hHjYYyUwAtMbHfM6Mg.jpg?r=213"
+                alt="" class="img">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXT-18CQh7HZnLXusYLKketmBrqk5QnypW0MTdGn9zClEmQDHFxy-iHrxCBr_Ga00DMnaTvKHXChoXUUdXaoEb2YTe_nadvNe1uq9tHllgJnfgwPM-5tg-O45Ayg8khRA80A.jpg?r=c56"
+                alt="" class="img">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABV2n7mMi6dW69Tp7xFOE3y_RU2P3K1U2RB0w54gcFKL5KipH-6rpTVDv-Kr3QrqGKPyFAJQr9QlW3OP9-a5xBMToWji_mZiDwCnMoGPSXlUi1T0DePwXGHsNe2ZsNC7nQK_9.jpg?r=f63"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABa9FB-3c9xHZ4Bvu-KKWmPbim0x2cD9vXbKk1qnH-DHQvIAj-B_6KyYoVxlFguwVx4IXa_ni-13A4z8ZwPlXDsy2zsgbNg8TgNI.jpg?r=97b"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVgzdeZGRAwCEa709VhH3rjzGTNzIDlWer-mLr3GaH6qm10zCfxxN-E1-JYCA8CxkoBD74MIuxW1agaVLL4kUpFTtsZPIuTfAV1ljNzcrTPup4487rDCgRuZm-Jn8fUi1cVx.jpg?r=d90"
+                alt="" class="img">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVCFw8MF6uGSOWNdDuWDceFWSWZ_MZr2EVeAVUKKwem4V55-hgOZIN4bL1ec88hlPQR8gCcr5Kjh3D5ooumjy06p86FGLS_UZOw.jpg?r=267"
+                alt="" class="img">
+
+        </div>
+    </div>
+    <div class="section">
+        <div class="first">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABSyEWnhjTjuqFw870rBScEnV2gTha0Gl7BmfSsX5e3RtJIM1eTzpnMRcInEiAcPfZDDUb75hwAh6s010xLSwWZvaH1iuN7CpRok.jpg?r=273"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABeoohnxFnnker6egKMvwn6DeDzabFIl9ofD4lkS5kkiTPw-oLlWlg5EpZ55JS5_fxaNaPe3XQikLVASgsLctH9EVpSaAa9-tUfqu6sGD8TTXs0N1KWu9-ZWOWYdhA6HajAgl.jpg?r=f17"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQv_qKs6sk8EvgL1Tys6_vGeoEK2mG7UaoT0kscI1Ia2BJZh8m_6pRLa9KIWwpg5uIYCOjS1Aw1faooc6zlgje2WDfsdtTTne4_-DFpmiUGlLRNNSl-Tk_xdhZxbe58GFLPL.jpg?r=b86"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVgzdeZGRAwCEa709VhH3rjzGTNzIDlWer-mLr3GaH6qm10zCfxxN-E1-JYCA8CxkoBD74MIuxW1agaVLL4kUpFTtsZPIuTfAV1ljNzcrTPup4487rDCgRuZm-Jn8fUi1cVx.jpg?r=d90"
+                alt="" class="img ">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABYoDa9uNT_sIEivblm1vOAPQTUwrpMwsVKKnIvYlHvm1fygT6QOLaHsUFBumyVWUe-aonr4OS6Xv8tUE2ZarGPmKXBrDhqVfQm2UiuZM3wtcAN3iaPf7xm7u09scGIW73X4s.jpg?r=e20"
+                alt="" class="img">
+            <img src="https://occ-0-6502-3646.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABfNlFEt-9DTSRWWIatIv7gv-ItPh91_VdnVeGeuJRFRDMiHhVSDQFSfhHSsy6-qpUXAVYcx_tl_nRJTe5hHjYYyUwAtMbHfM6Mg.jpg?r=213"
+                alt="" class="img">
+            <img src="" alt="" class="image4">
+        </div>
+    </div>
+    <h2 class="para">More reasons to join</h2>
+    <div class="section box1">
+        <div class="box">
+            <h2>Enjoy on your TV</h>
+                <h4>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</h4>
+                img.tv
+        </div>
+        <div class="box">
+            <h2>Download your shows to watch offline</h2>
+            <h4>Save your favourites easily and always have something to watch</h4>
+        </div>
+        <div class="box">
+            <h2>Watch everywhere</h2>
+            <h4>Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.</h4>
+        </div>
+        <div class="box">
+            <h2>Create profiles for kids</h2>
+            <h4>Send kids on adventures with their favourite characters in a space made just for them — free with your
+                membership.</h4>
+        </div>
+    </div>
+    <div class="h10">
+        <h3>Frequently Asked Questions</h3>
+    </div>
+    <div class="question">
+        <p>What is Netflix?</p>
+        <svg class="svgfirst" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
+            <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+        </svg>
+
+    </div>
+    <div class="question">
+        <p>How much does Netflix cost?</p>
+        <svg class="svgsec" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
+            <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+        </svg>
+
+    </div>
+    <div class="question">
+        <p>Where can I watch?</p>
+        <svg class="svgthird" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
+            <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+        </svg>
+
+    </div>
+    <div class="question">
+        <p>How do I cancel?</p>
+        <svg class="svgfour" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
+            <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+        </svg>
+
+    </div>
+    <div class="question">
+        <p>What can I watch on Netflix?</p>
+        <svg class="svgfive" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
+            <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+        </svg>
+
+    </div>
+    <div class="question">
+        <p>Is Netflix good for kids?</p>
+        <svg class="svgsix" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
+            <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+        </svg>
+
+    </div>
+    <div class="footer">
+        <h3 class="footerpara">Questions? Call 000-800-919-1743</h3>
+    </div>
+    <div class="footer5">
+        <div class="footer1 ">
+            <a href="">FAQ</a>
+            <a href="">Investor Relations</a>
+            <a href="">Privacy</a>
+            <a href="">Speed Test</a>
+        </div>
+        <div class=" footer2">
+            <a href="">Help Centre</a>
+            <a href="">Jobs</a>
+            <a href="">Cookie Preferences</a>
+            <a href="">Legal Notices</a>
+        </div>
+        <div class=" footer3">
+            <a href="">Account</a>
+            <a href="">Ways to Watch</a>
+            <a href="">Corporate Information</a>
+            <a href="">Only on Netflix</a>
+        </div>
+        <div class=" footer3">
+            <a href="">Media Centre</a>
+            <a href="">Terms of Use</a>
+            <a href="">Contact Us</a>
+
+        </div>
+    </div>
+    <button class="footbtn btn-black">English</button>
+    <p class="footpara">Netflix India</p>
+    <p class="lastpara">This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="/">Learn
+            more</a></p>
+</body>
+
+</html>
